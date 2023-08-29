@@ -33,7 +33,7 @@ const getTea = (numOfCups) => {
 };
 
 // Only change code below this line
-const tea4Team = null;
+const tea4Team = getTea(40);
 // Only change code above this line
 
 //2 Understand Functional Programming Terminology
@@ -77,8 +77,8 @@ const getTea = (prepareTea, numOfCups) => {
 };
 
 // Only change code below this line
-const tea4GreenTeamFCC = null;
-const tea4BlackTeamFCC = null;
+const tea4GreenTeamFCC = getTea(prepareGreenTea, 27);
+const tea4BlackTeamFCC = getTea(prepareBlackTea, 13);
 // Only change code above this line
 
 console.log(
@@ -86,8 +86,10 @@ console.log(
   tea4BlackTeamFCC
 );
 
-
-
+function add(param1, param2){
+  console.log(param1 + param2)
+}
+add(10, 10)
 
 // //3. Functional Programming: Understand the Hazards of Using Imperative Code
 // // Functional programming is a good habit. It keeps your code easy to manage, and saves you from sneaky bugs. But before we get there, let's look at an imperative approach to programming to highlight where you may have issues.
@@ -109,7 +111,7 @@ console.log(
 // Examine the code in the editor. It's using a method that has side effects in the program, causing incorrect behaviour. The final list of open tabs, stored in finalTabs.tabs, should be ['FB', 'Gitter', 'Reddit', 'Twitter', 'Medium', 'new tab', 'Netflix', 'YouTube', 'Vine', 'GMail', 'Work mail', 'Docs', 'freeCodeCamp', 'new tab'] but the list produced by the code is slightly different.
 
 // Change Window.prototype.tabClose so that it removes the correct tab.
-
+// ['FB', 'Gitter', 'Reddit', 'Twitter', 'Medium', 'new tab', 'Netflix', 'YouTube', 'Vine', 'GMail', 'Work mail', 'Docs', 'freeCodeCamp', 'new tab']
 
 
 // tabs is an array of titles of each site open within the window
@@ -135,7 +137,7 @@ var Window = function(tabs) {
     // Only change code below this line
   
     var tabsBeforeIndex = this.tabs.splice(0, index); // Get the tabs before the tab
-    var tabsAfterIndex = this.tabs.splice(index + 1); // Get the tabs after the tab
+    var tabsAfterIndex = this.tabs.splice(1); // Get the tabs after the tab
   
     this.tabs = tabsBeforeIndex.concat(tabsAfterIndex); // Join them together
   
@@ -148,12 +150,13 @@ var Window = function(tabs) {
   var workWindow = new Window(['GMail', 'Inbox', 'Work mail', 'Docs', 'freeCodeCamp']); // Your mailbox, drive, and other work sites
   var socialWindow = new Window(['FB', 'Gitter', 'Reddit', 'Twitter', 'Medium']); // Social sites
   var videoWindow = new Window(['Netflix', 'YouTube', 'Vimeo', 'Vine']); // Entertainment sites
-  
+  ['FB', 'Gitter', 'Reddit', 'Twitter', 'Medium', 'new tab', 'Netflix', 'Youtube', 'Vine', 'Gmail', 'Work mail', 'Docs', 'freecodecamp', 'New tab']
   // Now perform the tab opening, closing, and other operations
+ 
   var finalTabs = socialWindow
     .tabOpen() // Open a new tab for cat memes
     .join(videoWindow.tabClose(2)) // Close third tab in video window, and join
-    .join(workWindow.tabClose(1).tabOpen());
+    .join(workWindow.tabClose(1).tabOpen()); //closes the second tab in the work window and adds new tab to the end
   console.log(finalTabs.tabs);
 
 
@@ -183,215 +186,9 @@ function incrementer () {
   // Only change code above this line
 }
 
-//5 Functional Programming: Sort an Array Alphabetically using the sort Method
-// The sort method sorts the elements of an array according to the callback function.
-
-// For example:
-
-// function ascendingOrder(arr) {
-//   return arr.sort(function(a, b) {
-//     return a - b;
-//   });
-// }
-// ascendingOrder([1, 5, 2, 3, 4]);
-// // Returns [1, 2, 3, 4, 5]
-
-// function reverseAlpha(arr) {
-//   return arr.sort(function(a, b) {
-//     return a === b ? 0 : a < b ? 1 : -1;
-//   });
-// }
-// reverseAlpha(['l', 'h', 'z', 'b', 's']);
-// // Returns ['z', 's', 'l', 'h', 'b']
-// JavaScript's default sorting method is by string Unicode point value, which may return unexpected results. Therefore, it is encouraged to provide a callback function to specify how to sort the array items. When such a callback function, normally called compareFunction, is supplied, the array elements are sorted according to the return value of the compareFunction: If compareFunction(a,b) returns a value less than 0 for two elements a and b, then a will come before b. If compareFunction(a,b) returns a value greater than 0 for two elements a and b, then b will come before a. If compareFunction(a,b) returns a value equal to 0 for two elements a and b, then a and b will remain unchanged.
-
-// Use the sort method in the alphabeticalOrder function to sort the elements of arr in alphabetical order.
-
-function alphabeticalOrder(arr) {
-    // Only change code below this line
-  
-  
-    // Only change code above this line
-  }
-  alphabeticalOrder(["a", "d", "c", "a", "z", "g"]);
-
-//6 Functional Programming: Return a Sorted Array Without Changing the Original Array
-
-//  A side effect of the sort method is that it changes the order of the elements in the original array. In other words, it mutates the array in place. One way to avoid this is to first concatenate an empty array to the one being sorted (remember that slice and concat return a new array), then run the sort method.
-
-// Use the sort method in the nonMutatingSort function to sort the elements of an array in ascending order. The function should return a new array, and not mutate the globalArray variable.
-
-var globalArray = [5, 6, 3, 2, 9];
-function nonMutatingSort(arr) {
-  // Only change code below this line
 
 
-  // Only change code above this line
-}
-nonMutatingSort(globalArray);
-
-
-//7 Functional Programming: Split a String into an Array Using the split Method
-// The split method splits a string into an array of strings. It takes an argument for the delimiter, which can be a character to use to break up the string or a regular expression. For example, if the delimiter is a space, you get an array of words, and if the delimiter is an empty string, you get an array of each character in the string.
-
-// Here are two examples that split one string by spaces, then another by digits using a regular expression:
-
-// var str = "Hello World";
-// var bySpace = str.split(" ");
-// // Sets bySpace to ["Hello", "World"]
-
-// var otherString = "How9are7you2today";
-// var byDigits = otherString.split(/\d/);
-// // Sets byDigits to ["How", "are", "you", "today"]
-// Since strings are immutable, the split method makes it easier to work with them.
-
-// Use the split method inside the splitify function to split str into an array of words. The function should return the array. Note that the words are not always separated by spaces, and the array should not contain punctuation.
-
-
-function splitify(str) {
-    // Only change code below this line
-  
-  
-    // Only change code above this line
-  }
-  splitify("Hello World,I-am code");
-
-
-//  8. Functional Programming: Combine an Array into a String Using the join Method 
-
-// The join method is used to join the elements of an array together to create a string. It takes an argument for the delimiter that is used to separate the array elements in the string.
-
-// Here's an example:
-
-// var arr = ["Hello", "World"];
-// var str = arr.join(" ");
-// // Sets str to "Hello World"
-// Use the join method (among others) inside the sentensify function to make a sentence from the words in the string str. The function should return a string. For example, "I-like-Star-Wars" would be converted to "I like Star Wars". For this challenge, do not use the replace method.
-
-function sentensify(str) {
-    // Only change code below this line
-  
-  
-    // Only change code above this line
-  }
-  sentensify("May-the-force-be-with-you");
-
-
-// 9. Functional Programming: Apply Functional Programming to Convert Strings to URL Slugs
-
-// The last several challenges covered a number of useful array and string methods that follow functional programming principles. We've also learned about reduce, which is a powerful method used to reduce problems to simpler forms. From computing averages to sorting, any array operation can be achieved by applying it. Recall that map and filter are special cases of reduce.
-
-// Let's combine what we've learned to solve a practical problem.
-
-// Many content management sites (CMS) have the titles of a post added to part of the URL for simple bookmarking purposes. For example, if you write a Medium post titled "Stop Using Reduce", it's likely the URL would have some form of the title string in it (".../stop-using-reduce"). You may have already noticed this on the freeCodeCamp site.
-
-// Fill in the urlSlug function so it converts a string title and returns the hyphenated version for the URL. You can use any of the methods covered in this section, and don't use replace. Here are the requirements:
-
-// The input is a string with spaces and title-cased words
-
-// The output is a string with the spaces between words replaced by a hyphen (-)
-
-// The output should be all lower-cased letters
-
-// The output should not have any spaces
-
-// Only change code below this line
-function urlSlug(title) {
-
-
-}
-// Only change code above this line
-
-// 10 Functional Programming: Use the every Method to Check that Every Element in an Array Meets a Criteria
-// The every method works with arrays to check if every element passes a particular test. It returns a Boolean value - true if all values meet the criteria, false if not.
-
-// For example, the following code would check if every element in the numbers array is less than 10:
-
-// var numbers = [1, 5, 8, 0, 10, 11];
-// numbers.every(function(currentValue) {
-//   return currentValue < 10;
-// });
-// // Returns false
-// Use the every method inside the checkPositive function to check if every element in arr is positive. The function should return a Boolean value.
-
-function checkPositive(arr) {
-    // Only change code below this line
-  
-  
-    // Only change code above this line
-  }
-  checkPositive([1, 2, 3, -4, 5]);
-
-
-//   11. Functional Programming: Use the some Method to Check that Any Elements in an Array Meet a Criteria
-
-// The some method works with arrays to check if any element passes a particular test. It returns a Boolean value - true if any of the values meet the criteria, false if not.
-
-// For example, the following code would check if any element in the numbers array is less than 10:
-
-// var numbers = [10, 50, 8, 220, 110, 11];
-// numbers.some(function(currentValue) {
-//   return currentValue < 10;
-// });
-// // Returns true
-// Use the some method inside the checkPositive function to check if any element in arr is positive. The function should return a Boolean value.
-
-function checkPositive(arr) {
-    // Only change code below this line
-  
-  
-    // Only change code above this line
-  }
-  checkPositive([1, 2, 3, -4, 5]);
-
-//   12 Functional Programming: Introduction to Currying and Partial Application 
-// The arity of a function is the number of arguments it requires. Currying a function means to convert a function of N arity into N functions of arity 1.
-
-// In other words, it restructures a function so it takes one argument, then returns another function that takes the next argument, and so on.
-
-// Here's an example:
-
-// //Un-curried function
-// function unCurried(x, y) {
-//   return x + y;
-// }
-
-// //Curried function
-// function curried(x) {
-//   return function(y) {
-//     return x + y;
-//   }
-// }
-// //Alternative using ES6
-// const curried = x => y => x + y
-
-// curried(1)(2) // Returns 3
-// This is useful in your program if you can't supply all the arguments to a function at one time. You can save each function call into a variable, which will hold the returned function reference that takes the next argument when it's available. Here's an example using the curried function in the example above:
-
-// // Call a curried function in parts:
-// var funcForY = curried(1);
-// console.log(funcForY(2)); // Prints 3
-// Similarly, partial application can be described as applying a few arguments to a function at a time and returning another function that is applied to more arguments. Here's an example:
-
-// //Impartial function
-// function impartial(x, y, z) {
-//   return x + y + z;
-// }
-// var partialFn = impartial.bind(this, 1, 2);
-// partialFn(10); // Returns 13
-// Fill in the body of the add function so it uses currying to add parameters x, y, and z.
-function add(x) {
-    // Only change code below this line
-  
-  
-    // Only change code above this line
-  }
-  add(10)(20)(30);
-
-
-  
-
-  //13.) Functional Programming: Pass Arguments to Avoid External Dependence in a Function
+  //5.) Functional Programming: Pass Arguments to Avoid External Dependence in a Function
 // The last challenge was a step closer to functional programming principles, but there is still something missing.
 
 // We didn't alter the global variable value, but the function incrementer would not work without the global variable fixedValue being there.
@@ -419,7 +216,7 @@ function incrementer () {
   // Only change code above this line
 }
 
-//14.) Functional Programming: Refactor Global Variables Out of Functions
+//6.) Functional Programming: Refactor Global Variables Out of Functions
 // So far, we have seen two distinct principles for functional programming:
 
 // Don't alter a variable or object - create new variables and objects and return them if need be from a function. Hint: using something like var newArr = arrVar, where arrVar is an array will simply create a reference to the existing variable and not a copy. So changing a value in newArr would change the value in arrVar.
@@ -464,7 +261,7 @@ console.log(bookList);
 
 
 
-//15.) Functional Programming: Use the map Method to Extract Data from an Array
+//7.) Functional Programming: Use the map Method to Extract Data from an Array
 // So far we have learned to use pure functions to avoid side effects in a program. Also, we have seen the value in having a function only depend on its input arguments.
 
 // This is only the beginning. As its name suggests, functional programming is centered around a theory of functions.
@@ -616,7 +413,7 @@ var watchList = [
   console.log(JSON.stringify(ratings));
 
 
-//16.) Functional Programming: Implement map on a Prototype
+//8) Functional Programming: Implement map on a Prototype
 // As you have seen from applying Array.prototype.map(), or simply map() earlier, the map method returns an array of the same length as the one it was called on. It also doesn't alter the original array, as long as its callback function doesn't.
 
 // In other words, map is a pure function, and its output depends solely on its inputs. Plus, it takes another function as its argument.
@@ -642,7 +439,7 @@ var new_s = arr.myMap(function(item) {
   return item * 2;
 });
 
-//17.) Functional Programming: Use the filter Method to Extract Data from an Array
+//9.) Functional Programming: Use the filter Method to Extract Data from an Array
 // Another useful array function is Array.prototype.filter(), or simply filter().
 
 // filter calls a function on each element of an array and returns a new array containing only the elements for which that function returns true. In other words, it filters the array, based on the function passed to it. Like map, it does this without needing to modify the original array.
@@ -783,7 +580,7 @@ var filteredList;
 
 console.log(filteredList);
 
-  //18.) Functional Programming: Implement the filter Method on a Prototype
+  //10.) Functional Programming: Implement the filter Method on a Prototype
 
 //   You might learn a lot about the filter method if you implement your own version of it. It is recommended you use a for loop or Array.prototype.forEach().
 
@@ -805,7 +602,7 @@ var new_s = s.myFilter(function(item) {
 });
 
 
-//19.) Functional Programming: Return Part of an Array Using the slice Method
+//11.) Functional Programming: Return Part of an Array Using the slice Method
 // The slice method returns a copy of certain elements of an array. It can take two arguments, the first gives the index of where to begin the slice, the second is the index for where to end the slice (and it's non-inclusive). If the arguments are not provided, the default is to start at the beginning of the array through the end, which is an easy way to make a copy of the entire array. The slice method does not mutate the original array, but returns a new one.
 
 // Here's an example:
@@ -824,7 +621,7 @@ function sliceArray(anim, beginSlice, endSlice) {
 
   sliceArray(inputAnim, 1, 3);
 
-//20.) Functional Programming: Remove Elements from an Array Using slice Instead of splice
+//12.) Functional Programming: Remove Elements from an Array Using slice Instead of splice
 // A common pattern while working with arrays is when you want to remove items and keep the rest of the array. JavaScript offers the splice method for this, which takes arguments for the index of where to start removing items, then the number of items to remove. If the second argument is not provided, the default is to remove items through the end. However, the splice method mutates the original array it is called on. Here's an example:
 
 var cities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
@@ -844,7 +641,7 @@ function nonMutatingSplice(cities) {
   var inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
   nonMutatingSplice(inputCities);
 
-  //21.)Functional Programming: Combine Two Arrays Using the concat Method
+  //13.)Functional Programming: Combine Two Arrays Using the concat Method
 //   Concatenation means to join items end to end. JavaScript offers the concat method for both strings and arrays that work in the same way. For arrays, the method is called on one, then another array is provided as the argument to concat, which is added to the end of the first array. It returns a new array and does not mutate either of the original arrays. Here's an example:
   [1, 2, 3].concat([4, 5, 6]);
   // Returns a new array [1, 2, 3, 4, 5, 6]
@@ -862,7 +659,7 @@ function nonMutatingConcat(original, attach) {
 
 
 
-  //22.)Functional Programming: Add Elements to the End of an Array Using concat Instead of push
+  //14.)Functional Programming: Add Elements to the End of an Array Using concat Instead of push
 //   Functional programming is all about creating and using non-mutating functions.
 
 //   The last challenge introduced the concat method as a way to combine arrays into a new one without mutating the original arrays. Compare concat to the push method. Push adds an item to the end of the same array it is called on, which mutates that array. Here's an example:
@@ -883,7 +680,7 @@ function nonMutatingPush(original, newItem) {
   var first = [1, 2, 3];
   var second = [4, 5];
   nonMutatingPush(first, second);
-//23.)Functional Programming: Use the reduce Method to Analyze Data
+//15.)Functional Programming: Use the reduce Method to Analyze Data
 // Array.prototype.reduce(), or simply reduce(), is the most general of all array operations in JavaScript. You can solve almost any array processing problem using the reduce method.
 
 // The reduce method allows for more general forms of array processing, and it's possible to show that both filter and map can be derived as special applications of reduce. The reduce method iterates over each item in an array and returns a single value (i.e. string, number, object, array). This is achieved via a callback function that is called on each iteration.
@@ -1042,7 +839,7 @@ var watchList = [
   console.log(getRating(watchList));
 
 
-  //24.)Functional Programming: Use Higher-Order Functions map, filter, or reduce to Solve a Complex Problem
+  //16.)Functional Programming: Use Higher-Order Functions map, filter, or reduce to Solve a Complex Problem
 //   Now that you have worked through a few challenges using higher-order functions like map(), filter(), and reduce(), you now get to apply them to solve a more complex challenge.
 
 //   We have defined a function named squareList. You need to complete the code for the squareList function using any combination of map(), filter(), and reduce() so that it returns a new array containing only the square of only the positive integers (decimal numbers are not integers) when an array of real numbers is passed to it. An example of an array containing only real numbers is [-3, 4.8, 5, 3, -3.2].
@@ -1058,3 +855,209 @@ const squareList = arr => {
   const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
   console.log(squaredIntegers);
  
+//17 Functional Programming: Sort an Array Alphabetically using the sort Method
+// The sort method sorts the elements of an array according to the callback function.
+
+// For example:
+
+// function ascendingOrder(arr) {
+//   return arr.sort(function(a, b) {
+//     return a - b;
+//   });
+// }
+// ascendingOrder([1, 5, 2, 3, 4]);
+// // Returns [1, 2, 3, 4, 5]
+
+// function reverseAlpha(arr) {
+//   return arr.sort(function(a, b) {
+//     return a === b ? 0 : a < b ? 1 : -1;
+//   });
+// }
+// reverseAlpha(['l', 'h', 'z', 'b', 's']);
+// // Returns ['z', 's', 'l', 'h', 'b']
+// JavaScript's default sorting method is by string Unicode point value, which may return unexpected results. Therefore, it is encouraged to provide a callback function to specify how to sort the array items. When such a callback function, normally called compareFunction, is supplied, the array elements are sorted according to the return value of the compareFunction: If compareFunction(a,b) returns a value less than 0 for two elements a and b, then a will come before b. If compareFunction(a,b) returns a value greater than 0 for two elements a and b, then b will come before a. If compareFunction(a,b) returns a value equal to 0 for two elements a and b, then a and b will remain unchanged.
+
+// Use the sort method in the alphabeticalOrder function to sort the elements of arr in alphabetical order.
+
+function alphabeticalOrder(arr) {
+  // Only change code below this line
+
+
+  // Only change code above this line
+}
+alphabeticalOrder(["a", "d", "c", "a", "z", "g"]);
+
+//18 Functional Programming: Return a Sorted Array Without Changing the Original Array
+
+//  A side effect of the sort method is that it changes the order of the elements in the original array. In other words, it mutates the array in place. One way to avoid this is to first concatenate an empty array to the one being sorted (remember that slice and concat return a new array), then run the sort method.
+
+// Use the sort method in the nonMutatingSort function to sort the elements of an array in ascending order. The function should return a new array, and not mutate the globalArray variable.
+
+var globalArray = [5, 6, 3, 2, 9];
+function nonMutatingSort(arr) {
+// Only change code below this line
+
+
+// Only change code above this line
+}
+nonMutatingSort(globalArray);
+
+
+//19 Functional Programming: Split a String into an Array Using the split Method
+// The split method splits a string into an array of strings. It takes an argument for the delimiter, which can be a character to use to break up the string or a regular expression. For example, if the delimiter is a space, you get an array of words, and if the delimiter is an empty string, you get an array of each character in the string.
+
+// Here are two examples that split one string by spaces, then another by digits using a regular expression:
+
+// var str = "Hello World";
+// var bySpace = str.split(" ");
+// // Sets bySpace to ["Hello", "World"]
+
+// var otherString = "How9are7you2today";
+// var byDigits = otherString.split(/\d/);
+// // Sets byDigits to ["How", "are", "you", "today"]
+// Since strings are immutable, the split method makes it easier to work with them.
+
+// Use the split method inside the splitify function to split str into an array of words. The function should return the array. Note that the words are not always separated by spaces, and the array should not contain punctuation.
+
+
+function splitify(str) {
+  // Only change code below this line
+
+
+  // Only change code above this line
+}
+splitify("Hello World,I-am code");
+
+
+// 20. Functional Programming: Combine an Array into a String Using the join Method 
+
+// The join method is used to join the elements of an array together to create a string. It takes an argument for the delimiter that is used to separate the array elements in the string.
+
+// Here's an example:
+
+// var arr = ["Hello", "World"];
+// var str = arr.join(" ");
+// // Sets str to "Hello World"
+// Use the join method (among others) inside the sentensify function to make a sentence from the words in the string str. The function should return a string. For example, "I-like-Star-Wars" would be converted to "I like Star Wars". For this challenge, do not use the replace method.
+
+function sentensify(str) {
+  // Only change code below this line
+
+
+  // Only change code above this line
+}
+sentensify("May-the-force-be-with-you");
+
+
+//21 Functional Programming: Apply Functional Programming to Convert Strings to URL Slugs
+
+// The last several challenges covered a number of useful array and string methods that follow functional programming principles. We've also learned about reduce, which is a powerful method used to reduce problems to simpler forms. From computing averages to sorting, any array operation can be achieved by applying it. Recall that map and filter are special cases of reduce.
+
+// Let's combine what we've learned to solve a practical problem.
+
+// Many content management sites (CMS) have the titles of a post added to part of the URL for simple bookmarking purposes. For example, if you write a Medium post titled "Stop Using Reduce", it's likely the URL would have some form of the title string in it (".../stop-using-reduce"). You may have already noticed this on the freeCodeCamp site.
+
+// Fill in the urlSlug function so it converts a string title and returns the hyphenated version for the URL. You can use any of the methods covered in this section, and don't use replace. Here are the requirements:
+
+// The input is a string with spaces and title-cased words
+
+// The output is a string with the spaces between words replaced by a hyphen (-)
+
+// The output should be all lower-cased letters
+
+// The output should not have any spaces
+
+// Only change code below this line
+function urlSlug(title) {
+
+
+}
+// Only change code above this line
+
+// 22 Functional Programming: Use the every Method to Check that Every Element in an Array Meets a Criteria
+// The every method works with arrays to check if every element passes a particular test. It returns a Boolean value - true if all values meet the criteria, false if not.
+
+// For example, the following code would check if every element in the numbers array is less than 10:
+
+// var numbers = [1, 5, 8, 0, 10, 11];
+// numbers.every(function(currentValue) {
+//   return currentValue < 10;
+// });
+// // Returns false
+// Use the every method inside the checkPositive function to check if every element in arr is positive. The function should return a Boolean value.
+
+function checkPositive(arr) {
+  // Only change code below this line
+
+
+  // Only change code above this line
+}
+checkPositive([1, 2, 3, -4, 5]);
+
+
+//   23. Functional Programming: Use the some Method to Check that Any Elements in an Array Meet a Criteria
+
+// The some method works with arrays to check if any element passes a particular test. It returns a Boolean value - true if any of the values meet the criteria, false if not.
+
+// For example, the following code would check if any element in the numbers array is less than 10:
+
+// var numbers = [10, 50, 8, 220, 110, 11];
+// numbers.some(function(currentValue) {
+//   return currentValue < 10;
+// });
+// // Returns true
+// Use the some method inside the checkPositive function to check if any element in arr is positive. The function should return a Boolean value.
+
+function checkPositive(arr) {
+  // Only change code below this line
+
+
+  // Only change code above this line
+}
+checkPositive([1, 2, 3, -4, 5]);
+
+//   24 Functional Programming: Introduction to Currying and Partial Application 
+// The arity of a function is the number of arguments it requires. Currying a function means to convert a function of N arity into N functions of arity 1.
+
+// In other words, it restructures a function so it takes one argument, then returns another function that takes the next argument, and so on.
+
+// Here's an example:
+
+// //Un-curried function
+// function unCurried(x, y) {
+//   return x + y;
+// }
+
+// //Curried function
+// function curried(x) {
+//   return function(y) {
+//     return x + y;
+//   }
+// }
+// //Alternative using ES6
+// const curried = x => y => x + y
+
+// curried(1)(2) // Returns 3
+// This is useful in your program if you can't supply all the arguments to a function at one time. You can save each function call into a variable, which will hold the returned function reference that takes the next argument when it's available. Here's an example using the curried function in the example above:
+
+// // Call a curried function in parts:
+// var funcForY = curried(1);
+// console.log(funcForY(2)); // Prints 3
+// Similarly, partial application can be described as applying a few arguments to a function at a time and returning another function that is applied to more arguments. Here's an example:
+
+// //Impartial function
+// function impartial(x, y, z) {
+//   return x + y + z;
+// }
+// var partialFn = impartial.bind(this, 1, 2);
+// partialFn(10); // Returns 13
+// Fill in the body of the add function so it uses currying to add parameters x, y, and z.
+function add(x) {
+  // Only change code below this line
+
+
+  // Only change code above this line
+}
+add(10)(20)(30);
+
+
