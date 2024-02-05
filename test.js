@@ -33,7 +33,7 @@ const getTea = (numOfCups) => {
 };
 
 // Only change code below this line
-const tea4Team = null;
+const tea4Team = getTea(40);
 // Only change code above this line
 
 //2 Understand Functional Programming Terminology
@@ -77,8 +77,8 @@ const getTea = (prepareTea, numOfCups) => {
 };
 
 // Only change code below this line
-const tea4GreenTeamFCC = null;
-const tea4BlackTeamFCC = null;
+const tea4GreenTeamFCC = getTea(prepareGreenTea, 27);
+const tea4BlackTeamFCC = getTea(prepareBlackTea, 13);
 // Only change code above this line
 
 console.log(
@@ -89,8 +89,8 @@ console.log(
 
 
 
-// //3. Functional Programming: Understand the Hazards of Using Imperative Code
-// // Functional programming is a good habit. It keeps your code easy to manage, and saves you from sneaky bugs. But before we get there, let's look at an imperative approach to programming to highlight where you may have issues.
+//3. Functional Programming: Understand the Hazards of Using Imperative Code
+// Functional programming is a good habit. It keeps your code easy to manage, and saves you from sneaky bugs. But before we get there, let's look at an imperative approach to programming to highlight where you may have issues.
 
 // In English (and many other languages), the imperative tense is used to give commands. Similarly, an imperative style in programming is one that gives the computer a set of statements to perform a task.
 
@@ -135,7 +135,7 @@ var Window = function(tabs) {
     // Only change code below this line
   
     var tabsBeforeIndex = this.tabs.splice(0, index); // Get the tabs before the tab
-    var tabsAfterIndex = this.tabs.splice(index + 1); // Get the tabs after the tab
+    var tabsAfterIndex = this.tabs.splice(1); // Get the tabs after the tab
   
     this.tabs = tabsBeforeIndex.concat(tabsAfterIndex); // Join them together
   
@@ -179,7 +179,7 @@ var fixedValue = 4;
 function incrementer () {
   // Only change code below this line
 
-
+return fixedValue + 1;
   // Only change code above this line
 }
 
@@ -188,28 +188,30 @@ function incrementer () {
 
 // For example:
 
-// function ascendingOrder(arr) {
-//   return arr.sort(function(a, b) {
-//     return a - b;
-//   });
-// }
-// ascendingOrder([1, 5, 2, 3, 4]);
-// // Returns [1, 2, 3, 4, 5]
+function ascendingOrder(arr) {
+  return arr.sort(function(a, b) {
+    return a - b;
+  });
+}
+ascendingOrder([1, 5, 2, 3, 4]);
+// Returns [1, 2, 3, 4, 5]
 
-// function reverseAlpha(arr) {
-//   return arr.sort(function(a, b) {
-//     return a === b ? 0 : a < b ? 1 : -1;
-//   });
-// }
-// reverseAlpha(['l', 'h', 'z', 'b', 's']);
-// // Returns ['z', 's', 'l', 'h', 'b']
+function reverseAlpha(arr) {
+  return arr.sort(function(a, b) {
+    return a === b ? 0 : a < b ? 1 : -1;
+  });
+}
+reverseAlpha(['l', 'h', 'z', 'b', 's']);
+// Returns ['z', 's', 'l', 'h', 'b']
 // JavaScript's default sorting method is by string Unicode point value, which may return unexpected results. Therefore, it is encouraged to provide a callback function to specify how to sort the array items. When such a callback function, normally called compareFunction, is supplied, the array elements are sorted according to the return value of the compareFunction: If compareFunction(a,b) returns a value less than 0 for two elements a and b, then a will come before b. If compareFunction(a,b) returns a value greater than 0 for two elements a and b, then b will come before a. If compareFunction(a,b) returns a value equal to 0 for two elements a and b, then a and b will remain unchanged.
 
 // Use the sort method in the alphabeticalOrder function to sort the elements of arr in alphabetical order.
 
 function alphabeticalOrder(arr) {
     // Only change code below this line
-  
+    return arr.sort(function(a, b) {
+      return a === b ? 0 : a < b ? -1 : 1;
+    });
   
     // Only change code above this line
   }
@@ -224,7 +226,9 @@ function alphabeticalOrder(arr) {
 var globalArray = [5, 6, 3, 2, 9];
 function nonMutatingSort(arr) {
   // Only change code below this line
-
+    return [].concat(arr).sort(function(a,b){
+     return a - b
+      })
 
   // Only change code above this line
 }
@@ -236,13 +240,13 @@ nonMutatingSort(globalArray);
 
 // Here are two examples that split one string by spaces, then another by digits using a regular expression:
 
-// var str = "Hello World";
-// var bySpace = str.split(" ");
-// // Sets bySpace to ["Hello", "World"]
+var str = "Hello World";
+var bySpace = str.split(" ");
+// Sets bySpace to ["Hello", "World"]
 
-// var otherString = "How9are7you2today";
-// var byDigits = otherString.split(/\d/);
-// // Sets byDigits to ["How", "are", "you", "today"]
+var otherString = "How9are7you2today";
+var byDigits = otherString.split(/\d/);
+// Sets byDigits to ["How", "are", "you", "today"]
 // Since strings are immutable, the split method makes it easier to work with them.
 
 // Use the split method inside the splitify function to split str into an array of words. The function should return the array. Note that the words are not always separated by spaces, and the array should not contain punctuation.
@@ -250,8 +254,7 @@ nonMutatingSort(globalArray);
 
 function splitify(str) {
     // Only change code below this line
-  
-  
+    return str.split(/\W/)
     // Only change code above this line
   }
   splitify("Hello World,I-am code");
@@ -263,14 +266,14 @@ function splitify(str) {
 
 // Here's an example:
 
-// var arr = ["Hello", "World"];
-// var str = arr.join(" ");
-// // Sets str to "Hello World"
+var arr = ["Hello", "World"];
+var str = arr.join(" ");
+// Sets str to "Hello World"
 // Use the join method (among others) inside the sentensify function to make a sentence from the words in the string str. The function should return a string. For example, "I-like-Star-Wars" would be converted to "I like Star Wars". For this challenge, do not use the replace method.
 
 function sentensify(str) {
     // Only change code below this line
-  
+  return str.split(/\W/).join(' ');
   
     // Only change code above this line
   }
@@ -297,8 +300,12 @@ function sentensify(str) {
 
 // Only change code below this line
 function urlSlug(title) {
-
-
+  return title
+            .toLowerCase()
+            .trim()
+            .split(/\s+/)
+            .join('-');
+ 
 }
 // Only change code above this line
 
@@ -307,16 +314,17 @@ function urlSlug(title) {
 
 // For example, the following code would check if every element in the numbers array is less than 10:
 
-// var numbers = [1, 5, 8, 0, 10, 11];
-// numbers.every(function(currentValue) {
-//   return currentValue < 10;
-// });
+var numbers = [1, 5, 8, 0, 10, 11];
+numbers.every(function(currentValue) {
+  return currentValue < 10;
+});
 // // Returns false
 // Use the every method inside the checkPositive function to check if every element in arr is positive. The function should return a Boolean value.
 
 function checkPositive(arr) {
     // Only change code below this line
   
+    return arr.every(val => val > 0)
   
     // Only change code above this line
   }
@@ -329,16 +337,17 @@ function checkPositive(arr) {
 
 // For example, the following code would check if any element in the numbers array is less than 10:
 
-// var numbers = [10, 50, 8, 220, 110, 11];
-// numbers.some(function(currentValue) {
-//   return currentValue < 10;
-// });
-// // Returns true
+var numbers = [10, 50, 8, 220, 110, 11];
+numbers.some(function(currentValue) {
+  return currentValue < 10;
+});
+// Returns true
 // Use the some method inside the checkPositive function to check if any element in arr is positive. The function should return a Boolean value.
 
 function checkPositive(arr) {
     // Only change code below this line
-  
+    
+    return arr.some(val => val > 0);
   
     // Only change code above this line
   }
@@ -351,38 +360,42 @@ function checkPositive(arr) {
 
 // Here's an example:
 
-// //Un-curried function
-// function unCurried(x, y) {
-//   return x + y;
-// }
+//Un-curried function
+function unCurried(x, y) {
+  return x + y;
+}
 
-// //Curried function
-// function curried(x) {
-//   return function(y) {
-//     return x + y;
-//   }
-// }
+//Curried function
+function curried(x) {
+  return function(y) {
+    return x + y;
+  }
+}
 // //Alternative using ES6
-// const curried = x => y => x + y
+const curried = x => y => x + y
 
-// curried(1)(2) // Returns 3
+curried(1)(2) // Returns 3
 // This is useful in your program if you can't supply all the arguments to a function at one time. You can save each function call into a variable, which will hold the returned function reference that takes the next argument when it's available. Here's an example using the curried function in the example above:
 
 // // Call a curried function in parts:
-// var funcForY = curried(1);
-// console.log(funcForY(2)); // Prints 3
+var funcForY = curried(1);
+console.log(funcForY(2)); // Prints 3
 // Similarly, partial application can be described as applying a few arguments to a function at a time and returning another function that is applied to more arguments. Here's an example:
 
-// //Impartial function
-// function impartial(x, y, z) {
-//   return x + y + z;
-// }
-// var partialFn = impartial.bind(this, 1, 2);
-// partialFn(10); // Returns 13
+//Impartial function
+function impartial(x, y, z) {
+  return x + y + z;
+}
+var partialFn = impartial.bind(this, 1, 2);
+partialFn(10); // Returns 13
 // Fill in the body of the add function so it uses currying to add parameters x, y, and z.
 function add(x) {
     // Only change code below this line
-  
+  return function(y){
+    return function(z){
+      return x + y + z
+    }
+  }
   
     // Only change code above this line
   }
